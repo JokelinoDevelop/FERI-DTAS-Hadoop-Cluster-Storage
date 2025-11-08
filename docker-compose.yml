@@ -1,0 +1,54 @@
+services:
+  namenode:
+    image: apache/hadoop:3.4.1
+    hostname: namenode
+    command: ["bash", "/tmp/init-namenode.sh"]
+    ports:
+      - 9870:9870
+    env_file:
+      - ./config
+    volumes:
+      - namenode-data:/tmp/hadoop-hadoop/dfs/name
+      - ./init-namenode.sh:/tmp/init-namenode.sh
+      - ./assignment.sh:/tmp/assignment.sh
+      - ./data:/data
+    user: "root"
+
+  datanode1:
+    image: apache/hadoop:3.4.1
+    command: ["hdfs", "datanode"]
+    ports:
+      - 9864:9864
+    env_file:
+      - ./config
+    volumes:
+      - datanode1-data:/tmp/hadoop-hadoop/dfs/data
+    user: "root"
+
+  datanode2:
+    image: apache/hadoop:3.4.1
+    command: ["hdfs", "datanode"]
+    ports:
+      - 9865:9864
+    env_file:
+      - ./config
+    volumes:
+      - datanode2-data:/tmp/hadoop-hadoop/dfs/data
+    user: "root"
+
+  datanode3:
+    image: apache/hadoop:3.4.1
+    command: ["hdfs", "datanode"]
+    ports:
+      - 9866:9864
+    env_file:
+      - ./config
+    volumes:
+      - datanode3-data:/tmp/hadoop-hadoop/dfs/data
+    user: "root"
+
+volumes:
+  namenode-data:
+  datanode1-data:
+  datanode2-data:
+  datanode3-data:

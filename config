@@ -1,0 +1,11 @@
+# Core Configuration
+CORE-SITE.XML_fs.defaultFS=hdfs://namenode:8020
+
+# HDFS Data Directories - CRITICAL
+HDFS-SITE.XML_dfs.namenode.name.dir=file:///tmp/hadoop-hadoop/dfs/name
+HDFS-SITE.XML_dfs.datanode.data.dir=file:///tmp/hadoop-hadoop/dfs/data
+
+HDFS-SITE.XML_dfs.replication=2
+HDFS-SITE.XML_dfs.blocksize=67108864
+HDFS-SITE.XML_dfs.permissions.enabled=false
+HDFS-SITE.XML_dfs.permissions.superusergroup=supergroup
