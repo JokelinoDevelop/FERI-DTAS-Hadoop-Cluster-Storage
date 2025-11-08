@@ -3,8 +3,9 @@
 ## Overview
 
 - Local Hadoop cluster for the Data Technologies and Services course.
-- Docker Compose spins up HDFS NameNode/DataNode, YARN ResourceManager/NodeManager, and a basic history server.
+- Docker Compose spins up HDFS NameNode/DataNode
 - Includes sample event dataset under `data/` and helper script `assignment.sh` for common jobs.
+- The script init-namenode.sh is being run at the start of the namenode container to format the namenode if it has not been already formatted
 
 ## Prerequisites
 
@@ -15,7 +16,7 @@
 
 - Start cluster: `docker compose up -d`
 - Check container status: `docker compose ps`
-- Submit sample job: `bash assignment.sh`
+- Submit sample job: `bash -lc tmp/assignment.sh` inside the namenode container
 - Stop cluster: `docker compose down`
 
 ## Files
